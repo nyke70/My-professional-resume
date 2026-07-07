@@ -17,7 +17,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           username: nyke70
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          password: ${{ secrets.DOCKER_PASSWD }}
       - name: Push image
         run: 
           docker push nyke70/cicd-portfolio                  
