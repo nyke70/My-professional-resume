@@ -24,11 +24,11 @@ jobs:
 
 
             - name: Build Docker Image
-              run: docker build -t ${{ secrets.ECR_REPO_}}/my-repo:latest .
+              run: docker build -t ${{ secrets.ECR_REPO}}/my-repo:latest .
             - name: Scan Docker Image
               uses: aquasecurity/trivy-action@v0.36.0
               with:
-               image-ref: ${{ secrets.ECR_REPO_}}/my-repo:latest
+               image-ref: ${{ secrets.ECR_REPO}}/my-repo:latest
                format: table
                exit-code: 0
                ignore-unfixed: true
@@ -42,7 +42,7 @@ jobs:
               id: login-ecr 
               uses: aws-actions/amazon-ecr-login@v2    
             - name: Push Docker Image to Amazon ECR
-              run: docker push ${{ secrets.ECR_REPO_}}/my-repo:latest        
+              run: docker push ${{ secrets.ECR_REPO}}/my-repo:latest        
                       
 
  
