@@ -33,7 +33,7 @@ jobs:
                     ignore-unfixed: true
                     severity: CRITICAL, HIGH
             - name: Push image to ECR
-              run: 
+              run: echo "push"
                     
                       
 
