@@ -22,16 +22,16 @@ jobs:
 
 
             - name: Build Docker Image
-              run: |
+              run: 
                     docker build -t 871715985635.dkr.ecr.us-east-1.amazonaws.com/my-repo:latest .
             - name: Scan Docker Image
               uses: aquasecurity/trivy-action@v0.36.0
               with:
-                    image-ref: 871715985635.dkr.ecr.us-east-1.amazonaws.com/my-repo:latest
-                    format: 'table'
-                    exit-code: 0
-                    ignore-unfixed: true
-                    severity: CRITICAL, HIGH
+                image-ref: 871715985635.dkr.ecr.us-east-1.amazonaws.com/my-repo:latest
+                format: table
+                exit-code: 0
+                ignore-unfixed: true
+                severity: CRITICAL, HIGH
             - name: Push image to ECR
               run: echo "push"
                     
