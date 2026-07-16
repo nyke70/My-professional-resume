@@ -56,9 +56,10 @@ jobs:
             - name: Deploy to Amazon ECS
               id: deploy-ecs
               uses: aws-actions/amazon-ecs-deploy-task-definition@v2
-              with:
-                 task-definition: ecs-task.json
-                 service: my-ecs-service
-                 cluster: my-ecs-cluster
+            - name: Update ECS service (no task file)
+              run: |
+                aws ecs update-service \
+                  --cluster my-ecs-cluster \
+                  --service my-ecs-service
 
 
