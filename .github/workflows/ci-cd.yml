@@ -55,7 +55,8 @@ jobs:
                  aws-region: us-east-1
             - name: Deploy to Amazon ECS
               id: deploy-ecs
-              uses: aws-actions/amazon-ecs-deploy-task-definition@v2
+              run: |
+                echo "Skipping amazon-ecs-deploy-task-definition@v2 because it requires a task-definition file"
             - name: Update ECS service (no task file)
               run: |
                 aws ecs update-service \
