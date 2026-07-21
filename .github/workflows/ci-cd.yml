@@ -63,4 +63,4 @@ jobs:
 
       - name: Update ECS Service
         run: |
-          aws ecs update-service --cluster my-cluster --service my-service --force-new-deployment
+          aws ecs update-service --cluster my-dev-cluster --service my-portfolio-service --force-new-deployment
