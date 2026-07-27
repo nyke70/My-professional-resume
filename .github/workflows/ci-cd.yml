@@ -10,7 +10,7 @@ permissions:
   id-token: write
 
 jobs:
-  buid_scan:
+  build_scan:
     runs-on: ubuntu-latest
 
     steps:
@@ -52,18 +52,19 @@ jobs:
 
   deploy_to_ecs:
     runs-on: ubuntu-latest
-    needs: buid_scan
+    needs: build_scan
 
     steps:
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: ${{ secrets.AWS_ROLE }}
-          aws-region: us-east-1
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ secrets.AWS_ROLE }}
+        aws-region: us-east-1
 
-      - name: Update ECS Service
-        run: |
-          aws ecs update-service --cluster my-dev-cluster --service my-portfolio-task-service-yfrszaa4 --force-new-deployment
-          
-
-##kevin
+    - name: Deploy ECS Service
+      uses: aws-actions/amazon-ecs-deploy-service@v1
+      with:
+        cluster: dev-cluster
+        service: portfolio_1-service
+        force-new-deployment: true
+        wait-for-service-stability: true
