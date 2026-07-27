@@ -62,7 +62,7 @@ jobs:
         aws-region: us-east-1
 
     - name: Deploy ECS Service
-      uses: aws-actions/amazon-ecs-deploy-service@v1
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v2
       with:
         cluster: dev-cluster
         service: portfolio_1-service
