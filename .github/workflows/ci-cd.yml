@@ -61,10 +61,10 @@ jobs:
         role-to-assume: ${{ secrets.AWS_ROLE }}
         aws-region: us-east-1
 
-    - name: Deploy ECS Service
-      uses: aws-actions/amazon-ecs-deploy-task-definition@v2
-      with:
-        cluster: dev-cluster
-        service: portfolio_1-service
-        force-new-deployment: true
-        wait-for-service-stability: true
+    
+    - name: Force ECS redeployment
+      run: |
+        aws ecs update-service \
+        --cluster dev-cluster \
+        --service portfolio_1-service\
+        --force-new-deployment
