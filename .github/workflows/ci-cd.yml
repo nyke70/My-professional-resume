@@ -66,5 +66,5 @@ jobs:
       run: |
         aws ecs update-service \
         --cluster dev-cluster \
-        --service portfolio_1-service\
+        --service portfolio_1-service \
         --force-new-deployment
